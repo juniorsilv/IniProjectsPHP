@@ -1,0 +1,22 @@
+
+
+RewriteEngine On
+#Options All -Indexes
+
+## ROUTER WWW Redirect.
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+## ROUTER HTTPS Redirect
+#RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#RewriteCond %{HTTPS} off
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ROUTER URL Rewrite
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?route=/$1 [L,QSA]
+
+php_value memory_limit 128M
+php_value upload_max_filesize 2048M 
+php_value post_max_size 2048M
