@@ -1,4 +1,4 @@
-## Confugação
+## Configuração
 
 ### Arquivos usados em todos projetos...
 
